@@ -37,5 +37,21 @@ end
 
 
 # this goes with the new-comment ajax request in application.js
-# get '/comments/new' do
-# end
+get '/comments/new' do
+  if request.xhr?
+    erb :'partials/_new_comment_form', layout: false
+  else
+    erb :'partials/_new_comment_form'
+  end
+end
+
+post '/comments' do
+  @comment = current_user.comments.create(params)
+  if request.xhr?
+    erb :'partials/_single_comment', layout: false, locals: {comment: @comment}
+  else
+    redirect '/'
+  end
+end
+
+

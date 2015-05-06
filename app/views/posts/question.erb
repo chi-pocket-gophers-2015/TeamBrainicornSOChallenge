@@ -1,8 +1,17 @@
 <div class="container">
-<h1><%= @question.title %></h1>
-<h5>Submitted by: <%= @question.user.username %>; on: <%= @question.created_at %></h5>
-<p><%= @question.content %></p><br>
 
-<% @answers.each do |answer| %>
-  <%= erb :"partials/_answer_display", locals: {answer: answer} %>
-<% end %>
+  <div class="question" data-id=<%=@question.id%>>
+    <h1><%= @question.title %></h1>
+    <h5>Submitted by: <%= @question.user.username %>; on: <%= @question.created_at %></h5>
+    <p><%= @question.content %></p><br>
+    <%=erb :'partials/_show_comments', locals: {comments: @question.comments}%>
+  </div>
+
+    <% @answers.each do |answer| %>
+      <div class="answer" data-id=<%=answer.id%> >
+        <%= erb :"partials/_answer_display", locals: {answer: answer} %>
+        <%= answer.comments.count %>
+        <%=erb :'partials/_show_comments', locals: {comments: answer.comments}%>
+      </div>
+    <% end %>
+</div>

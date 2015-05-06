@@ -7,17 +7,54 @@ $(document).ready(function() {
 
 
   // trying to add new-comment button functionality here:
-  // $('#add_comment').click(function(event){
-  //   event.preventDefault();
+  $('.comment_link').click(function(event){
+    event.preventDefault();
 
-  //   var request = $.ajax({
-  //     url: '/comments/new'
-  //   });
+    var myParent = $(this).parent();
 
-  //   request.success(function(response){
-  //     $('.container').append(response)
-  //   });
-  // });
+    var request = $.ajax({
+      url: '/comments/new',
+      method: 'get'
+    });
+
+    request.success(function(response){
+      $('.comment_link').show();
+      $(this).hide();
+      $('.comment_form').hide();
+      myParent.append(response);
+    });
+
+    $(this).hide();
+  // end #add_comment block
+  });
+
+  $(document).on('submit','.comment_form',function(event) {
+    event.preventDefault();
+
+    var myParent = $(this).parent();
+    var type = myParent.attr('class');
+    var id = myParent.attr('data-id');
+    // debugger;
+    var request = $.ajax({
+      url: '/comments',
+      method: 'post',
+      data: {
+        content: this.content.value,
+        commentable_id: id,
+        commentable_type: type
+      }
+    });
+
+    request.done(function(response){
+      $('.comments').append(response);
+      $('#comment_link').show();
+      $(this).hide();
+    });
+
+  // end comment_form block
+  });
 
 
+
+// end document.ready
 });
