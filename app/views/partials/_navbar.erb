@@ -1,0 +1,20 @@
+<nav class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-collapse collapse">
+    <% if current_user %>
+      <ul class="nav navbar-nav navbar-left">
+        <li><h5 class="navbar-text" >Welcome, <%= current_user.username %></h5></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav navbar-left">
+        <li><h5 class="navbar-text" ><a href="/users/new">Create account</a></h5></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login">Login</a></li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
+
