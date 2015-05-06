@@ -74,6 +74,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   activesupport
+  bcrypt-ruby
   faker
   pg
   rake

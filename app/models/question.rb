@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  include Scoring
   validates :content, presence: true
   validates :title, presence: true
 
