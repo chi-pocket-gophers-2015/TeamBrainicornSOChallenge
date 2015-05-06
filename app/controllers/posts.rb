@@ -24,15 +24,18 @@ post '/questions' do
   redirect '/index'
 end
 
+post '/questions/:id/answers' do
+  Answer.create(params[:answer])
+  redirect "/questions/#{params[:id]}"
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.answers
   erb :"posts/question"
 end
 
-post '/questions/:id/answers' do
-  redirect '/questions/:id'
-end
+
 
 
 
