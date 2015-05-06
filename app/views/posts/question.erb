@@ -15,3 +15,15 @@
       </div>
     <% end %>
 </div>
+
+
+<!-- new question button  answer this question can only be seen if logged in-->
+
+<% if current_user %>
+  <form  action= <%="/questions/#{@question.id}/answers" %> method="post">
+    <input type="hidden" name="answer[user_id]" value= <%= current_user.id %> >
+    <input type="hidden" name="answer[question_id]" value= <%=@question.id %> >
+    <textarea name="answer[content]" placeholder="What is the answer?"></textarea><br><br>
+    <button id= "new_answer_button" >Submit Answer</button>
+  </form>
+<% end %>

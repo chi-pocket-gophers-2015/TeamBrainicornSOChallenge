@@ -9,10 +9,12 @@
       </ul>
     <% else %>
       <ul class="nav navbar-nav navbar-left">
-        <li><h5 class="navbar-text" ><a href="/users/new">Create account</a></h5></li>
+        <div class="form-group">
+          <input type="text" name="username" placeholder="User name">
+        </div>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Login</a></li>
+        <li><h5 class="navbar-text" ><a href="/users/new">Create account</a></h5></li>
       </ul>
     <% end %>
   </div>
