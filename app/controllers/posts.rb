@@ -9,6 +9,10 @@ get '/index' do
   erb :index
 end
 
+get '/questions' do
+  redirect '/index'
+end
+
 get '/questions/new' do
   puts "current user: #{current_user.username}"
   erb :"posts/new"
