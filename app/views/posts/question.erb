@@ -1,7 +1,7 @@
 <div class="container">
-<h1><%= question.title %></h1>
-<h5>Submitted by: <%= question.user.username %>; on: <%= question.created_at %></h5>
-<p><%= question.content %></p><br>
+<h1><%= @question.title %></h1>
+<h5>Submitted by: <%= @question.user.username %>; on: <%= @question.created_at %></h5>
+<p><%= @question.content %></p><br>
 
 <% @answers.each do |answer| %>
   <%= erb :"partials/_answer_display", locals: {answer: answer} %>

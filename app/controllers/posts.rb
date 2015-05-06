@@ -14,3 +14,10 @@ get '/questions/:id' do
   @answers = @question.answers
   erb :"posts/question"
 end
+
+
+# this goes with the new-comment ajax request in application.js
+# get '/comments/new' do
+
+
+# end

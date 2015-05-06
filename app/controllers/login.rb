@@ -13,7 +13,6 @@ post '/login' do
 end
 
 get '/logout' do
-  #update session, clear session
   session.clear
   redirect '/'
 end

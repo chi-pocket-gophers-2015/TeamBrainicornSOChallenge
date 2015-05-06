@@ -19,12 +19,12 @@ end
 Question.all.each do |question|
   3.times do
     content = Faker::Lorem.paragraph[0..255]
-    Answer.create(content: content, user_id: rand_user, question_id: question.id)
+    question.answers.create(content: content, user_id: rand_user)
   end
 
   10.times do
     rand > 0.25 ? up = true : up = false
-    Vote.create(voteable_type: "question", voteable_id: question.id, user_id: rand_user, up: up)
+    question.votes.create(user_id: rand_user, up: up)
   end
 end
 
