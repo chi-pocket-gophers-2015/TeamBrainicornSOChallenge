@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+  include Scoring
   validates :content, presence: true
   belongs_to :question
   belongs_to :user
