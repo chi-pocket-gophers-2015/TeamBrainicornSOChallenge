@@ -1,5 +1,5 @@
 <%if @error_messages %>
-  <%=erb :_errors, locals: {messages: @error_messages}%>
+  <%=erb :'partials/_errors', locals: {messages: @error_messages}%>
 <%end%>
 
 <form action="/users" method="post">
