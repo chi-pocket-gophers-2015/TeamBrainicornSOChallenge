@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('.glyphicon.glyphicon-chevron-up').click(function(event){
+  $('.glyphicon-chevron-up').click(function(event){
     event.preventDefault();
 
     var myParent = $(this).parent().parent();
@@ -16,7 +16,7 @@ $(document).ready(function() {
         up: true
       },
       success: function(response) {
-        var scoreSpan = myParent.children(".voting_button").children(".score")
+        var scoreSpan = myParent.children(".voting_button").children(".score");
         // debugger;
         scoreSpan.html(""),
         scoreSpan.append(response.score)
@@ -29,7 +29,7 @@ $(document).ready(function() {
   });
 
 
-  $('.glyphicon.glyphicon-chevron-down').click(function(event){
+  $('.glyphicon-chevron-down').click(function(event){
     event.preventDefault();
 
     var myParent = $(this).parent().parent();
