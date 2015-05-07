@@ -28,7 +28,9 @@ end
 
 post '/questions/:id/answers' do
   Answer.create(params[:answer])
-  redirect "/questions/#{params[:id]}"
+  if request.xhr?
+    erb :layout: false
+  # redirect "/questions/#{params[:id]}"
 end
 
 get '/questions/:id' do

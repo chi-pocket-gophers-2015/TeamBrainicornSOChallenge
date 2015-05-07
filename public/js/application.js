@@ -61,6 +61,29 @@ $(document).ready(function() {
     })
   });
 
+  $('#new-answer-button').click(function() {
+
+    var content = $('.answer-content').val();
+    var user_id = $('.answer-user').val();
+    var question_id = $('.answer-question').val();
+
+    var request = $.ajax({
+      url: '/questions/' + question_id,
+      method: 'post',
+      data: {
+        question_id: question_id,
+        content: content,
+        user_id: user_id
+      }
+
+      success: function(response){
+        $('.all-answers').append(response)
+      }
+
+    })
+  });
+
+
 
 // end document.ready
 });
