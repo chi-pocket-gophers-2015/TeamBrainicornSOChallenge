@@ -6,6 +6,12 @@
         score: @scores[i],
         answer_count: @answer_counts[i]
       } %>
+    <% end %><br>
+
+    <% if current_user %>
+      <h5><a href="/questions/new">Post a new question</a></h5>
+    <% else %>
+      <p>Please sign in to comment, add an answer, or post a new question.</p>
     <% end %>
   </div>
 </div>
