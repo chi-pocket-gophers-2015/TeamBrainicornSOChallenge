@@ -23,8 +23,6 @@ post '/questions' do
   puts "user id: #{session[:user_id]}"
   puts "current user: #{current_user}"
   @question = current_user.questions.create(params)
-
-  # @question = Question.new
   redirect '/index'
 end
 

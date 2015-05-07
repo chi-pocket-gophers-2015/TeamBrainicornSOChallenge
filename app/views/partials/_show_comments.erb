@@ -1,6 +1,8 @@
 <div class="comments">
-  <% comments.each do |comment|%>
-    <%= erb :'partials/_single_comment', locals: {comment: comment} %>
-  <%end%>
+  <ul>
+    <% comments.each do |comment|%>
+      <li><%= erb :'partials/_single_comment', locals: {comment: comment} %></li>
+    <%end%>
+  </ul>
 </div>
 <%=erb :'partials/_comment_link'%>

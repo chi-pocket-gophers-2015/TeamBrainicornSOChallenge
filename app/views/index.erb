@@ -1,9 +1,11 @@
 <div class="container">
-  <% @questions.each_with_index do |question,i| %>
-    <%= erb :"partials/_question_link", locals: {
-      question: question,
-      score: @scores[i],
-      answer_count: @answer_counts[i]
-    } %>
-  <% end %>
+  <div class="jumbotron">
+    <% @questions.each_with_index do |question,i| %>
+      <%= erb :"partials/_question_link", locals: {
+        question: question,
+        score: @scores[i],
+        answer_count: @answer_counts[i]
+      } %>
+    <% end %>
+  </div>
 </div>
