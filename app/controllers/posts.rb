@@ -53,6 +53,8 @@ get '/comments/new' do
 end
 
 post '/comments' do
+  params[:commentable_type].capitalize!
+  puts "params: #{params}"
   @comment = current_user.comments.create(params)
   if request.xhr?
     erb :'partials/_single_comment', layout: false, locals: {comment: @comment}

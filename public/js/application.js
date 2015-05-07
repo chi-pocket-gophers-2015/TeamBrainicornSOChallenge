@@ -18,9 +18,6 @@ $(document).ready(function() {
     });
 
     request.success(function(response){
-      $('.comment_link').show();
-      $(this).hide();
-      $('.comment_form').hide();
       myParent.append(response);
     });
 
@@ -45,10 +42,15 @@ $(document).ready(function() {
       }
     });
 
+    $('.comment_form').hide();
+
     request.done(function(response){
-      $('.comments').append(response);
-      $('#comment_link').show();
-      $(this).hide();
+      debugger;
+      // $('.comments').append(response);
+      $(this).parent().append(response);
+      $('.comment_link').show();
+      // $(this).hide();
+      $('div[data-id='+id+']')
     });
 
   // end comment_form block
