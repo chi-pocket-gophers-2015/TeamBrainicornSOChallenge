@@ -17,3 +17,21 @@ th {
   padding-left: 20px;
 }
 
+.best_answer {
+  border-left: 3px solid green;
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
+.right {
+  text-align: right
+}
+
+
+
+
+
+.glyphicon-star { color: #cc6600 }
+.glyphicon-heart { color: red }
+.glyphicon-thumbs-up { color: green }
+.glyphicon-king { color: black }

@@ -34,10 +34,15 @@ end
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.answers
+  @best_answer = @question.best_answer
   erb :"posts/question"
 end
 
-
+post '/questions/:question_id/answers/:answer_id/best' do
+  question = Question.find(params[:question_id].to_i)
+  question.update_attributes(best_answer_id: params[:answer_id].to_i)
+  redirect "/questions/#{params[:question_id]}"
+end
 
 
 

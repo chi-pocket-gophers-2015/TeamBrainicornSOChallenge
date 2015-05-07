@@ -12,5 +12,4 @@ class Question < ActiveRecord::Base
   def created_ago
     timeago(self.created_at)
   end
-
 end
