@@ -46,7 +46,7 @@ end
 
 post '/questions/:question_id/answers/:answer_id/best' do
   question = Question.find(params[:question_id].to_i)
-  question.update_attributes(best_answer_id: params[:answer_id].to_i)
+  question.update_attribute(:best_answer_id, params[:answer_id].to_i)
   redirect "/questions/#{params[:question_id]}"
 end
 

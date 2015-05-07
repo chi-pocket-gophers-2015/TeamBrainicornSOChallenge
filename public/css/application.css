@@ -72,6 +72,13 @@ th {
   margin-left: 15%;
 }
 
+.right {
+  position: absolute;
+  right:0px;
+  bottom:10%;
+  opacity: 0.75;
+}
+
 
 
 

@@ -10,7 +10,7 @@
         <%=erb :'partials/_show_comments', locals: {comments: @question.comments.reverse}%>
       </div>
       <p id="answers_title">
-        <%=@answers.count%> Answers:
+        <span><%=@answers.count%></span> Answers:
       </p>
     </div>
 
