@@ -27,10 +27,15 @@ post '/questions' do
 end
 
 post '/questions/:id/answers' do
-  Answer.create(params[:answer])
   if request.xhr?
-    erb :layout: false
-  # redirect "/questions/#{params[:id]}"
+    answer_data = filter(params)
+    puts answer_data
+    answer = Answer.create(answer_data)
+    erb :"partials/_full_answer", layout: false, locals: {answer: answer}
+  else
+    Answer.create(params[:answer])
+    redirect "/questions/#{params[:id]}"
+  end
 end
 
 get '/questions/:id' do

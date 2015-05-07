@@ -13,4 +13,8 @@ helpers do
     return html
   end
 
+  def filter(hash)
+    hash.except('splat','captures','id')
+  end
+
 end

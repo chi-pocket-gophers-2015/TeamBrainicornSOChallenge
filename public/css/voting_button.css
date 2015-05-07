@@ -1,10 +1,9 @@
-
-.glyphicon.glyphicon-chevron-up:hover {
+.glyphicon-chevron-up:hover {
   color:green;
   cursor: pointer;
 }
 
-.glyphicon.glyphicon-chevron-down:hover {
+.glyphicon-chevron-down:hover {
   color:red;
   cursor: pointer;
 }

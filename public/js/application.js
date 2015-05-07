@@ -35,11 +35,12 @@ $(document).ready(function() {
     var request = $.ajax({
       url: '/comments',
       method: 'post',
-      data: {
-        content: this.content.value,
-        commentable_id: id,
-        commentable_type: type
-      },
+      data: this.serialize(),
+      // data: {
+      //   content: this.content.value,
+      //   commentable_id: id,
+      //   commentable_type: type
+      // },
       success: function(response) {
         myParent.find('ul').append(response),
         $('.comment_form').hide();
@@ -62,19 +63,20 @@ $(document).ready(function() {
   });
 
   $('#new-answer-button').click(function() {
+    event.preventDefault();
 
     var content = $('.answer-content').val();
     var user_id = $('.answer-user').val();
     var question_id = $('.answer-question').val();
 
     var request = $.ajax({
-      url: '/questions/' + question_id,
+      url: '/questions/'+question_id+'/answers',
       method: 'post',
       data: {
         question_id: question_id,
         content: content,
         user_id: user_id
-      }
+      },
 
       success: function(response){
         $('.all-answers').append(response)
