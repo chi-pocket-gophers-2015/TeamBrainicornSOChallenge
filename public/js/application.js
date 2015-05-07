@@ -31,7 +31,7 @@ $(document).ready(function() {
     var myParent = $(this).parent();
     var type = myParent.attr('class');
     var id = myParent.attr('data-id');
-    // debugger;
+
     var request = $.ajax({
       url: '/comments',
       method: 'post',
@@ -45,17 +45,26 @@ $(document).ready(function() {
     $('.comment_form').hide();
 
     request.done(function(response){
-      debugger;
-      // $('.comments').append(response);
+
       $(this).parent().append(response);
+
       $('.comment_link').show();
       // $(this).hide();
-      $('div[data-id='+id+']')
     });
 
   // end comment_form block
   });
 
+
+  // adding ajax login functionality
+  $('#login').click(function() {
+    var username = $('input[name=username]').val();
+    var password = $('input[name=password]').val();
+
+    var request = $.ajax({
+      url: '/'
+    })
+  });
 
 
 // end document.ready
