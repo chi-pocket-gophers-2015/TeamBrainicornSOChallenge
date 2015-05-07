@@ -22,4 +22,17 @@ class User < ActiveRecord::Base
     return user if user && (user.password == password)
     nil
   end
+
+  def already_voted?(voteable_params)
+    self.votes.find_by(voteable_params.except(:up))
+  end
+
+  def vote(voteable_params)
+    if this_vote = already_voted?(voteable_params)
+      this_vote.update_attribute(:up, voteable_params[:up])
+    else
+      self.votes.create(voteable_params)
+    end
+  end
+
 end
