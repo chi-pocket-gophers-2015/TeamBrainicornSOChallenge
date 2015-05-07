@@ -4,6 +4,8 @@ class Question < ActiveRecord::Base
   validates :title, presence: true
 
   belongs_to :user
+  validates :user_id, presence: true
+
   belongs_to :best_answer, class_name: "Answer"
   has_many :answers
   has_many :comments, as: :commentable
