@@ -10,7 +10,6 @@
     <% @answers.each do |answer| %>
       <div class="answer" data-id=<%=answer.id%> >
         <%= erb :"partials/_answer_display", locals: {answer: answer} %>
-        <%= answer.comments.count %>
         <%=erb :'partials/_show_comments', locals: {comments: answer.comments}%>
       </div>
     <% end %>
