@@ -1,7 +1,7 @@
 <div class="comments">
   <ul>
     <% comments.each do |comment|%>
-      <li><%= erb :'partials/_single_comment', locals: {comment: comment} %></li>
+      <%= erb :'partials/_single_comment', locals: {comment: comment} %>
     <%end%>
   </ul>
 </div>

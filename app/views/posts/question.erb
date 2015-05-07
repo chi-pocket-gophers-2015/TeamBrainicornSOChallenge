@@ -2,18 +2,24 @@
   <div class="jumbotron">
 
     <div class="question" data-id=<%=@question.id%>>
-      <h1><%= @question.title %></h1>
-      <h5>Submitted by: <%= @question.user.username %>, <%= timeago(@question.created_at) %></h5>
-      <p><%= @question.content %></p>
-      <%=erb :'partials/_show_comments', locals: {comments: @question.comments.reverse}%>
+      <%=erb :'partials/_voting_button'%>
+      <div class="content">
+        <h1><%= @question.title %></h1>
+        <h5>Submitted by: <%= @question.user.username %>, <%= timeago(@question.created_at) %></h5>
+        <p><%= @question.content %></p>
+        <%=erb :'partials/_show_comments', locals: {comments: @question.comments.reverse}%>
+      </div>
     </div>
 
     <% @answers.each do |answer| %>
       <div class="answer" data-id=<%=answer.id%> >
-        <%= erb :"partials/_answer_display", locals: {answer: answer} %>
-        <%=erb :'partials/_show_comments', locals: {comments: answer.comments.reverse}%>
+        <%=erb :'partials/_voting_button'%>
+        <div class="content">
+          <%= erb :"partials/_answer_display", locals: {answer: answer} %>
+          <%=erb :'partials/_show_comments', locals: {comments: answer.comments.reverse}%>
+        </div>
       </div>
-    <% end %>
+      <% end %>
 
     <!-- new question button  answer this question can only be seen if logged in-->
     <br><br>
