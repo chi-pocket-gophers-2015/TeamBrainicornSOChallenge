@@ -12,36 +12,38 @@
     </div>
 
     <!-- Display best answer first (if we have one)  and remove it from @answers array -->
-    <% if @best_answer %>
-      <div class="best_answer" data-id=<%= @best_answer.id %> >
-        <%= best_answer %>
-        <%=erb :'partials/_voting_button'%>
-        <div class="content">
-          <%= erb :"partials/_answer_display", locals: {answer: @best_answer} %>
-          <%=erb :'partials/_show_comments', locals: {comments: @best_answer.comments.reverse}%>
+    <div class="all-answers">
+      <% if @best_answer %>
+        <div class="best_answer" data-id=<%= @best_answer.id %> >
+          <%= best_answer %>
+          <%=erb :'partials/_voting_button'%>
+          <div class="content">
+            <%= erb :"partials/_answer_display", locals: {answer: @best_answer} %>
+            <%=erb :'partials/_show_comments', locals: {comments: @best_answer.comments.reverse}%>
+          </div>
         </div>
-      </div>
-      <% @answers.delete(@best_answer) %>
-    <% end %>
+        <% @answers.delete(@best_answer) %>
+      <% end %>
 
-    <% @answers.each do |answer| %>
-      <div class="answer" data-id=<%=answer.id%> >
-        <%=erb :'partials/_voting_button'%>
-        <div class="content">
-          <%= erb :"partials/_answer_display", locals: {answer: answer} %>
-          <%=erb :'partials/_show_comments', locals: {comments: answer.comments.reverse}%>
+      <% @answers.each do |answer| %>
+        <div class="answer" data-id=<%=answer.id%> >
+          <%=erb :'partials/_voting_button'%>
+          <div class="content">
+            <%= erb :"partials/_answer_display", locals: {answer: answer} %>
+            <%=erb :'partials/_show_comments', locals: {comments: answer.comments.reverse}%>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <!-- new question button  answer this question can only be seen if logged in-->
     <br><br>
     <% if current_user %>
       <form  action= <%="/questions/#{@question.id}/answers" %> method="post">
-        <input type="hidden" name="answer[user_id]" value= <%= current_user.id %> >
-        <input type="hidden" name="answer[question_id]" value= <%=@question.id %> >
-        <textarea name="answer[content]" placeholder="What is the answer?"></textarea><br><br>
-        <button id= "new_answer_button" >Submit Answer</button>
+        <input type="hidden" class="answer-user" name="answer[user_id]" value= <%= current_user.id %> >
+        <input type="hidden" class="answer-question" name="answer[question_id]" value= <%=@question.id %> >
+        <textarea name="answer[content]" class="answer-content" placeholder="What is the answer?"></textarea><br><br>
+        <button id="new-answer-button" >Submit Answer</button>
       </form>
     <% else %>
       <p>Please sign in to comment, add an answer, or post a new question.</p>
