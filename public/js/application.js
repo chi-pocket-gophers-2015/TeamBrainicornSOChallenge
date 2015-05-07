@@ -7,7 +7,8 @@ $(document).ready(function() {
 
 
   // trying to add new-comment button functionality here:
-  $('.comment_link').click(function(event){
+  // $('.comment_link').click(function(event){
+  $(document).on('click','.comment_link',function(event){
     event.preventDefault();
 
     var myParent = $(this).parent().parent();
@@ -35,12 +36,12 @@ $(document).ready(function() {
     var request = $.ajax({
       url: '/comments',
       method: 'post',
-      data: this.serialize(),
-      // data: {
-      //   content: this.content.value,
-      //   commentable_id: id,
-      //   commentable_type: type
-      // },
+      // data: this.serialize(),
+      data: {
+        content: this.content.value,
+        commentable_id: id,
+        commentable_type: type
+      },
       success: function(response) {
         myParent.find('ul').append(response),
         $('.comment_form').hide();

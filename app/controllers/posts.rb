@@ -29,7 +29,6 @@ end
 post '/questions/:id/answers' do
   if request.xhr?
     answer_data = filter(params)
-    puts answer_data
     answer = Answer.create(answer_data)
     erb :"partials/_full_answer", layout: false, locals: {answer: answer}
   else
