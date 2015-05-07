@@ -18,7 +18,7 @@ $(document).ready(function() {
     });
 
     request.success(function(response){
-      myParent.append(response);
+      myParent.children('.content').append(response);
     });
 
     $(this).hide();

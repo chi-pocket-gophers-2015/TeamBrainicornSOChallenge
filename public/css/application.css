@@ -17,7 +17,7 @@ th {
   padding-left: 20px;
 }
 
-.best_answer {
+#best_answer {
   border-left: 3px solid green;
   margin-left: 10px;
   padding-left: 20px;
@@ -27,6 +27,13 @@ th {
   text-align: right
 }
 
+.jumbotron {
+  border:1px solid black;
+}
+
+.content {
+  border-bottom: 1px solid gray;
+}
 
 
 
