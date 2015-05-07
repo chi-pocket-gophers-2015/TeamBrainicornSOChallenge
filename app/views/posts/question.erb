@@ -13,9 +13,9 @@
 
     <!-- Display best answer first (if we have one)  and remove it from @answers array -->
     <% if @best_answer %>
-      <div class="best_answer" data-id=<%= @best_answer.id %> >
+      <div class="answer" id="best_answer" data-id=<%= @best_answer.id %> >
+        <%=erb :'partials/_voting_button', locals: {object: @best_answer}%>
         <%= best_answer %>
-        <%=erb :'partials/_voting_button'%>
         <div class="content">
           <%= erb :"partials/_answer_display", locals: {answer: @best_answer} %>
           <%=erb :'partials/_show_comments', locals: {comments: @best_answer.comments.reverse}%>
