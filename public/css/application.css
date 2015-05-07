@@ -36,7 +36,7 @@ th {
 }
 
 .question > .content {
-  margin-top: -20%;
+  /*padding-top: -20%;*/
 }
 
 .question > .voting_button {
@@ -50,7 +50,7 @@ th {
 .content {
   display: inline-block;
   margin-left: 10%;
-  margin-top: -10%;
+/*  padding-top: -10%;*/
 }
 
 .voting_button {

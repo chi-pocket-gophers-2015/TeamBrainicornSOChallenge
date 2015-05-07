@@ -12,28 +12,14 @@
     </div>
 
     <!-- Display best answer first (if we have one)  and remove it from @answers array -->
-
     <div class="all-answers">
       <% if @best_answer %>
-        <div class="best_answer" id="best_answer" data-id=<%= @best_answer.id %> >
-          <%=erb :'partials/_voting_button', locals: {object: @best_answer}%>
-          <div class="content">
-            <%= best_answer %>
-            <%= erb :"partials/_answer_display", locals: {answer: @best_answer} %>
-            <%=erb :'partials/_show_comments', locals: {comments: @best_answer.comments.reverse}%>
-          </div>
-        </div>
+        <%= erb :"partials/_full_answer", locals: {answer: @best_answer, classes: "best_answer" } %>
         <% @answers.delete(@best_answer) %>
       <% end %>
 
       <% @answers.each do |answer| %>
-        <div class="answer" data-id=<%=answer.id%> >
-          <%=erb :'partials/_voting_button', locals: {object: answer}%>
-          <div class="content">
-            <%= erb :"partials/_answer_display", locals: {answer: answer} %>
-            <%=erb :'partials/_show_comments', locals: {comments: answer.comments.reverse}%>
-          </div>
-        </div>
+        <%= erb :"partials/_full_answer", locals: {answer: answer } %>
       <% end %>
     </div>
 
