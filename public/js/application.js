@@ -10,7 +10,7 @@ $(document).ready(function() {
   $('.comment_link').click(function(event){
     event.preventDefault();
 
-    var myParent = $(this).parent();
+    var myParent = $(this).parent().parent();
 
     var request = $.ajax({
       url: '/comments/new',
@@ -22,13 +22,13 @@ $(document).ready(function() {
     });
 
     $(this).hide();
-  // end #add_comment block
+  // end .comment_link block
   });
 
   $(document).on('submit','.comment_form',function(event) {
     event.preventDefault();
 
-    var myParent = $(this).parent();
+    var myParent = $(this).parent().parent();
     var type = myParent.attr('class');
     var id = myParent.attr('data-id');
 
@@ -39,20 +39,16 @@ $(document).ready(function() {
         content: this.content.value,
         commentable_id: id,
         commentable_type: type
+      },
+      success: function(response) {
+        debugger;
+        myParent.find('ul').append(response),
+        $('.comment_form').hide();
+        $('.comment_link').show();
       }
     });
 
-    $('.comment_form').hide();
-
-    request.done(function(response){
-
-      $(this).parent().append(response);
-
-      $('.comment_link').show();
-      // $(this).hide();
-    });
-
-  // end comment_form block
+    // end 'comment_form block'
   });
 
 
