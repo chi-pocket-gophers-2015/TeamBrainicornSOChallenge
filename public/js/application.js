@@ -80,7 +80,11 @@ $(document).ready(function() {
       },
 
       success: function(response){
-        $('.all-answers').append(response)
+        var answer_count = $('#answers_title').children('span');
+        var new_count = parseInt((answer_count).html()) + 1
+        $('.all-answers').append(response),
+        answer_count.html(''),
+        answer_count.append(new_count)
       }
 
     })
