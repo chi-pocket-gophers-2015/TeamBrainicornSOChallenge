@@ -9,11 +9,15 @@
         <p><%= @question.content %></p>
         <%=erb :'partials/_show_comments', locals: {comments: @question.comments.reverse}%>
       </div>
+      <p id="answers_title">
+        <%=@answers.count%> Answers:
+      </p>
     </div>
 
     <!-- Display best answer first (if we have one)  and remove it from @answers array -->
     <div class="all-answers">
       <% if @best_answer %>
+        <span id="best_answer"><%= best_answer %></span>
         <%= erb :"partials/_full_answer", locals: {answer: @best_answer, classes: "best_answer" } %>
         <% @answers.delete(@best_answer) %>
       <% end %>
@@ -23,7 +27,7 @@
       <% end %>
     </div>
 
-    <!-- new question button  answer this question can only be seen if logged in-->
+    <!-- new answer button  answer this question can only be seen if logged in-->
     <br><br>
     <% if current_user %>
       <form  action= <%="/questions/#{@question.id}/answers" %> method="post">
