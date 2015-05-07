@@ -41,7 +41,6 @@ $(document).ready(function() {
         commentable_type: type
       },
       success: function(response) {
-        debugger;
         myParent.find('ul').append(response),
         $('.comment_form').hide();
         $('.comment_link').show();
