@@ -1,0 +1,22 @@
+
+.glyphicon {
+  color: black;
+}
+
+.upvoted {
+  color: green;
+}
+
+.downvoted {
+  color: red;
+}
+
+.glyphicon-chevron-up:hover {
+  color:green;
+  cursor: pointer;
+}
+
+.glyphicon-chevron-down:hover {
+  color:red;
+  cursor: pointer;
+}

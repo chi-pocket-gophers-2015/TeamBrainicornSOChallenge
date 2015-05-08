@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="jumbotron">
+
+    <div class="question" data-id=<%=@question.id%>>
+      <%=erb :'partials/_voting_button', locals: {object: @question}%>
+      <div class="content">
+        <h1><%= @question.title %></h1>
+        <h5>Submitted by: <%= @question.user.username %>, <%= timeago(@question.created_at) %></h5>
+        <p><%= @question.content %></p>
+        <%=erb :'partials/_show_comments', locals: {comments: @question.comments.reverse}%>
+      </div>
+      <p id="answers_title">
+        <span><%=@answers.count%></span> Answers:
+      </p>
+    </div>
+
+    <!-- Display best answer first (if we have one)  and remove it from @answers array -->
+    <div class="all-answers">
+      <% if @best_answer %>
+
+        <span id="best_answer"><%= best_answer %></span>
+        <%= erb :"partials/_full_answer", locals: {answer: @best_answer, classes: "best_answer" } %>
+        <% @answers.delete(@best_answer) %>
+        <% @best_answer.update_attributes(question_id: @question.id) %>
+      <% end %>
+
+      <% @answers.each do |answer| %>
+        <%= erb :"partials/_full_answer", locals: {answer: answer } %>
+      <% end %>
+    </div>
+
+    <!-- new answer button  answer this question can only be seen if logged in-->
+    <br><br>
+    <% if current_user %>
+      <form  action= <%="/questions/#{@question.id}/answers" %> method="post">
+        <input type="hidden" class="answer-user" name="answer[user_id]" value= <%= current_user.id %> >
+        <input type="hidden" class="answer-question" name="answer[question_id]" value= <%=@question.id %> >
+        <textarea name="answer[content]" class="answer-content" placeholder="What is the answer?"></textarea><br><br>
+        <button id="new-answer-button" >Submit Answer</button>
+      </form>
+    <% else %>
+      <p>Please sign in to comment, add an answer, or post a new question.</p>
+    <% end %>
+    <h5><a href="/index">Back to Home Page</a></h5>
+  </div>
+</div>

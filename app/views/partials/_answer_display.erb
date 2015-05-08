@@ -1,0 +1,6 @@
+<p><%= answer.content %></p>
+<h5>posted by: <%= answer.user.username %>, <%= timeago(answer.created_at) %></h5>
+<% if answer != answer.question.best_answer #&& question.user == current_user %>
+  <%= erb :"partials/_best_answer_link", locals: {answer: answer, question: @question} %>
+<% end %>
+<br>
