@@ -1,5 +1,7 @@
 <div class="container">
   <div class="jumbotron">
+    <%= erb :"partials/_sort_by_buttons" %>
+
     <% @questions.each_with_index do |question,i| %>
       <%= erb :"partials/_question_link", locals: {
         question: question,
