@@ -7,7 +7,8 @@ $(document).ready(function() {
 
 
   // trying to add new-comment button functionality here:
-  $('.comment_link').click(function(event){
+  // $('.comment_link').click(function(event){
+  $(document).on('click','.comment_link',function(event){
     event.preventDefault();
 
     var myParent = $(this).parent().parent();
@@ -35,6 +36,7 @@ $(document).ready(function() {
     var request = $.ajax({
       url: '/comments',
       method: 'post',
+      // data: this.serialize(),
       data: {
         content: this.content.value,
         commentable_id: id,
@@ -60,6 +62,34 @@ $(document).ready(function() {
       url: '/'
     })
   });
+
+  $('#new-answer-button').click(function() {
+    event.preventDefault();
+
+    var content = $('.answer-content').val();
+    var user_id = $('.answer-user').val();
+    var question_id = $('.answer-question').val();
+
+    var request = $.ajax({
+      url: '/questions/'+question_id+'/answers',
+      method: 'post',
+      data: {
+        question_id: question_id,
+        content: content,
+        user_id: user_id
+      },
+
+      success: function(response){
+        var answer_count = $('#answers_title').children('span');
+        var new_count = parseInt((answer_count).html()) + 1
+        $('.all-answers').append(response),
+        answer_count.html(''),
+        answer_count.append(new_count)
+      }
+
+    })
+  });
+
 
 
 // end document.ready

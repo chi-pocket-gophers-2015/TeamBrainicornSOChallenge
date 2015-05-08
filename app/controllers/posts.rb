@@ -27,8 +27,14 @@ post '/questions' do
 end
 
 post '/questions/:id/answers' do
-  Answer.create(params[:answer])
-  redirect "/questions/#{params[:id]}"
+  if request.xhr?
+    answer_data = filter(params)
+    answer = Answer.create(answer_data)
+    erb :"partials/_full_answer", layout: false, locals: {answer: answer}
+  else
+    Answer.create(params[:answer])
+    redirect "/questions/#{params[:id]}"
+  end
 end
 
 get '/questions/:id' do
@@ -40,7 +46,7 @@ end
 
 post '/questions/:question_id/answers/:answer_id/best' do
   question = Question.find(params[:question_id].to_i)
-  question.update_attributes(best_answer_id: params[:answer_id].to_i)
+  question.update_attribute(:best_answer_id, params[:answer_id].to_i)
   redirect "/questions/#{params[:question_id]}"
 end
 
