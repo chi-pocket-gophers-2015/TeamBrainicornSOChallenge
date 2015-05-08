@@ -11,6 +11,17 @@ class Question < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
+  def self.get_all_sorted(sort_pref)
+    if sort_pref == "trending"
+      Question.all.sort_by { |q| q.trend_score }.reverse
+    elsif sort_pref == "recent"
+      Question.all.order(created_at: :desc)
+    else
+      Question.all.sort_by { |q| q.score }.reverse
+    end
+  end
+
+
   def created_ago
     timeago(self.created_at)
   end
@@ -29,13 +40,8 @@ class Question < ActiveRecord::Base
     return q_new + q_vote_count + ans_count + ans_vote_count + comment_count
   end
 
-  def self.get_all_sorted(sort_pref)
-    if sort_pref == "trending"
-      Question.all.sort_by { |q| q.trend_score }.reverse
-    elsif sort_pref == "recent"
-      Question.all.order(created_at: :desc)
-    else
-      Question.all.sort_by { |q| q.score }.reverse
-    end
+  def get_sorted_answers
+    return answers.sort_by { |a| a.score }.reverse
   end
+
 end

@@ -87,6 +87,8 @@ $(document).ready(function() {
         answer_count.append(new_count)
       }
 
+      $('.answer-content').val('')
+
     })
   });
 
