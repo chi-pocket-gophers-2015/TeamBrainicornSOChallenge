@@ -1,25 +1,29 @@
 <nav class="navbar navbar-inverse" role="navigation">
   <div class="navbar-collapse collapse">
     <% if current_user %>
+
       <ul class="nav navbar-nav navbar-left">
         <li><h5 class="navbar-text" >Welcome, <%= current_user.username %></h5></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout">Logout</a></li>
-      </ul>
-    <% else %>
-      <ul class="nav navbar-nav navbar-left">
-        <li><h5 class="navbar-text"><a href="/login">Login</a></h5></li>
+      <form id="logout-form" class="navbar-form navbar-right">
+        <input class="btn btn-default" type="submit" value="Logout">
+      </form>
 
-        <!-- <div class="form-group" style="margin-top:10px">
-          <input type="text" name="username" placeholder="User name">
-          <input type="password" name="password" placeholder="Password">
-          <input type="submit" id="login" value="Login">
-        </div> -->
+    <% else %>
+
+      <ul class="nav navbar-nav navbar-left">
+        <div class="form-group" style="margin-top:10px" class="navbar-form navbar-left">
+          <form id="login-form">
+            <input type="text" name="username" placeholder="User name">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" id="login" value="Login">
+          </form>
+        </div>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><h5 class="navbar-text"><a href="/users/new">Create account</a></h5></li>
       </ul>
+
     <% end %>
   </div>
 </nav>

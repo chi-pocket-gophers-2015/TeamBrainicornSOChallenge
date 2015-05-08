@@ -6,7 +6,7 @@ post '/login' do
   if @user = User.authenticate(params[:username],params[:password])
     session[:user_id] = @user.id
     if request.xhr?
-      #TODO>>>>>>>
+      erb :"partials/_navbar", layout: false
     else
       redirect '/'
     end
@@ -16,9 +16,13 @@ post '/login' do
   end
 end
 
-get '/logout' do
+delete '/sessions' do
   session.clear
-  redirect '/'
+  if request.xhr?
+    erb :"partials/_navbar", layout: false
+  else
+    redirect '/'
+  end
 end
 
 get '/users/new' do

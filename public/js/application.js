@@ -52,17 +52,6 @@ $(document).ready(function() {
     // end 'comment_form block'
   });
 
-
-  // adding ajax login functionality
-  $('#login').click(function() {
-    var username = $('input[name=username]').val();
-    var password = $('input[name=password]').val();
-
-    var request = $.ajax({
-      url: '/'
-    })
-  });
-
   $('#new-answer-button').click(function() {
     event.preventDefault();
 
@@ -81,15 +70,14 @@ $(document).ready(function() {
 
       success: function(response){
         var answer_count = $('#answers_title').children('span');
-        var new_count = parseInt((answer_count).html()) + 1
-        $('.all-answers').append(response),
-        answer_count.html(''),
-        answer_count.append(new_count)
+        var new_count = parseInt((answer_count).html()) + 1;
+        $('.all-answers').append(response);
+        answer_count.html('');
+        answer_count.append(new_count);
       }
+    });
 
-      $('.answer-content').val('')
-
-    })
+    $('.answer-content').val('');
   });
 
 
