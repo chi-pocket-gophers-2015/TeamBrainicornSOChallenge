@@ -1,0 +1,17 @@
+<div class="container">
+  <ul class="nav nav-pills">
+    <% if session[:sorting] == "trending" %>
+      <li role="presentation" class="active"><a href="/sort_by/trending">Trending</a></li>
+      <li role="presentation"><a href="/sort_by/recent">Recent</a></li>
+      <li role="presentation"><a href="/sort_by/votes">High Score</a></li>
+    <% elsif session[:sorting] == "recent" %>
+      <li role="presentation"><a href="/sort_by/trending">Trending</a></li>
+      <li role="presentation" class="active"><a href="/sort_by/recent">Recent</a></li>
+      <li role="presentation"><a href="/sort_by/votes">High Score</a></li>
+    <% else %>
+      <li role="presentation"><a href="/sort_by/trending">Trending</a></li>
+      <li role="presentation"><a href="/sort_by/recent">Recent</a></li>
+      <li role="presentation" class="active"><a href="/sort_by/votes">High Score</a></li>
+    <% end %>
+  </ul>
+</div>

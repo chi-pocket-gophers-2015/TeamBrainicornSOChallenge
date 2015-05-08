@@ -17,4 +17,8 @@ helpers do
     hash.except('splat','captures','id')
   end
 
+  def get_sort_method
+    session[:sorting] ||= "votes"
+  end
+
 end
