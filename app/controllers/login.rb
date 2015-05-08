@@ -5,7 +5,11 @@ end
 post '/login' do
   if @user = User.authenticate(params[:username],params[:password])
     session[:user_id] = @user.id
-    redirect '/'
+    if request.xhr?
+      #TODO>>>>>>>
+    else
+      redirect '/'
+    end
   else
     @error_messages = ["Invalid username and/or password"]
     erb :'users/login'

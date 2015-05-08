@@ -2,7 +2,7 @@
   margin: 20px auto;
   width: 600px;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+ /* border: 1px dotted black;*/
 }
 th {
   text-align: left;
@@ -10,3 +10,61 @@ th {
 .errors {
   color: red;
 }
+
+.answer {
+/*  border-left: 2px solid black;*/
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
+#best_answer {
+/*  border-left: 3px solid green;
+  margin-left: 10px;
+  padding-left: 20px;*/
+}
+
+.right {
+  text-align: right
+}
+
+.jumbotron {
+  border:1px solid black;
+}
+
+.question, .answer {
+  border-bottom: 1px solid gray;
+}
+
+.question > .content {
+  margin-top: -20%;
+}
+
+.question > .voting_button {
+  font-size: 2em;
+}
+
+.score {
+  margin-left: 15%;
+}
+
+.content {
+  display: inline-block;
+  margin-left: 10%;
+  margin-top: -10%;
+}
+
+.voting_button {
+  display: inline-block;
+  margin-top: 5%;
+  font-size: 1.25em;
+}
+
+
+
+
+
+
+.glyphicon-star { color: #cc6600 }
+.glyphicon-heart { color: red }
+.glyphicon-thumbs-up { color: green }
+.glyphicon-king { color: black }
