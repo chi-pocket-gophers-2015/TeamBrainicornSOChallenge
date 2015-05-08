@@ -22,7 +22,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  @answers = @question.answers
+  @answers = @question.get_sorted_answers
   @best_answer = @question.best_answer
   erb :"posts/question"
 end
