@@ -1,10 +1,41 @@
 <link rel="stylesheet" href="/css/voting_button.css">
 
+<!-- if user has voted on this thing
+  if user has upvoted
+    make green
+  else
+    make red
+else
+  make black
+end -->
 
 <div class="voting_button">
-<span class="glyphicon glyphicon-chevron-up" aria-hidden="true" ></span>
-<br>
-<span class="score"><%=object.score%></span>
-<br>
-<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+  <% @vote = Vote.find_by(user: current_user,voteable: object) %>
+  <% if @vote %>
+    <% if @vote.up %>
+
+      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true" style="color:green"></span>
+      <br>
+      <span class="score"><%=object.score%></span>
+      <br>
+      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="color:black"></span>
+
+    <% else %>
+
+      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true" style="color:black"></span>
+      <br>
+      <span class="score"><%=object.score%></span>
+      <br>
+      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="color:red"></span>
+
+    <% end %>
+  <% else %>
+
+    <span class="glyphicon glyphicon-chevron-up" aria-hidden="true" style="color:black"></span>
+    <br>
+    <span class="score"><%=object.score%></span>
+    <br>
+    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="color:black"></span>
+
+  <% end %>
 </div>

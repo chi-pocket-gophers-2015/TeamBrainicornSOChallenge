@@ -6,6 +6,7 @@ $(document).ready(function() {
     var myParent = $(this).parent().parent();
     var type = myParent.attr('class');
     var id = myParent.attr('data-id');
+    var button = $(this)
 
     var request = $.ajax({
       url: '/votes',
@@ -19,7 +20,9 @@ $(document).ready(function() {
         var scoreSpan = myParent.children(".voting_button").children(".score");
         // debugger;
         scoreSpan.html(""),
-        scoreSpan.append(response.score)
+        scoreSpan.append(response.score),
+        button.css('color', 'green')
+        myParent.find('.glyphicon-chevron-down').css('color', 'black')
       }
     });
 
@@ -35,6 +38,7 @@ $(document).ready(function() {
     var myParent = $(this).parent().parent();
     var type = myParent.attr('class');
     var id = myParent.attr('data-id');
+    var button = $(this)
 
     var request = $.ajax({
       url: '/votes',
@@ -49,6 +53,10 @@ $(document).ready(function() {
         // debugger;
         scoreSpan.html(""),
         scoreSpan.append(response.score)
+        button.addClass("downvoted")
+        myParent.find('.glyphicon-chevron-up').css('color', 'black')
+        // $('.glyphicon-chevron-up').css('color', 'black')
+        button.css('color', 'red').toggle
       }
     });
 
